@@ -19,7 +19,7 @@ io.sockets.on("connection", function (socket) {
 
   // ブロードキャスト（送信者以外の全員に送信）
   socket.on("C_to_S_broadcast", function (data) {
-    socket.broadcast.emit("S_to_C_message", data);
+    socket.broadcast.emit("remoteVolume", data);
 
     console.log(data);
   });

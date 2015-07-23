@@ -11,14 +11,14 @@
     <script>
         //--- Network----
         
-         var socket = io.connect('http://10.228.56.31:3000'); //ローカル
+         var socket = io.connect('http://10.228.56.10:3000'); //ローカル
 
           //サーバから受け取るイベント
           socket.on("connect", function () {});  // 接続時
           socket.on("disconnect", function (client) {});  // 切断時
-          socket.on("mousePos",function(data){
+          socket.on("remoteVolume",function(data){
               //it should be call back function
-              showVolume('RemoteVolume', data[0]); //graphics 
+              showVolume('RemoteVolume', data[0]); //graphics              
           });
         
         //send data to server
@@ -89,6 +89,9 @@
             
             ctx.fillStyle='rgba(34,51,68,0.1)';
             ctx.fillRect(0,0,360,360);
+            
+            
+            console.log(r);
         
         }
         
@@ -112,7 +115,7 @@
         function Loop(){
             rafID = window.requestAnimationFrame( Loop );
             sendBroadcast(meter.volume, 0); //send volume data 0.0 to 1.0
-            console.log(meter.volume);
+            //console.log(meter.volume);
         }
     
     </script>
