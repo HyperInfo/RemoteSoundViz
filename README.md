@@ -1,3 +1,11 @@
+# RemoteSoundViz
+
+node remoteSoundVizServer.js
+
++mofify  
+modify your server's address in idex.html
+var socket = io.connect('http://10.228.56.50:3000'); 
+
 # Simple volume meter
 
 I whipped this app up to show a basic volume meter on live audio input.  It does both clip detection and RMS volume.
@@ -9,4 +17,4 @@ It's also hosted at http://webaudiodemos.appspot.com/volume-meter/.
 Check it out, feel free to fork, submit pull requests, etc.  MIT-Licensed - party on.
 
 -Chris
-# RemoteSoundViz
+
