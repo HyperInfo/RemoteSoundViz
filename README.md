@@ -4,6 +4,7 @@ node remoteSoundVizServer.js
 
 +mofify  
 modify your server's address in idex.html
+
 var socket = io.connect('http://10.228.56.50:3000'); 
 
 # Simple volume meter
