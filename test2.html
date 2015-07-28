@@ -11,15 +11,7 @@
     <script>
         //--- Network----
         
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-         var socket = io.connect('http://10.228.56.50:3000'); //ローカル
-=======
-         var socket = io.connect('http://10.228.56.10:3000'); //ローカル
->>>>>>> origin/master
-=======
-         var socket = io.connect('http://10.228.56.10:8000'); //ローカル
->>>>>>> Stashed changes
+         var socket = io.connect('http://133.3.251.112:54321'); //ローカル
 
           //サーバから受け取るイベント
           socket.on("connect", function () {});  // 接続時
@@ -96,15 +88,11 @@
             ctx.stroke();
             
             ctx.fillStyle='rgba(34,51,68,0.1)';
-<<<<<<< HEAD
-            ctx.fillRect(0,0,360,360);     
-=======
             ctx.fillRect(0,0,360,360);
             
             
             console.log(r);
         
->>>>>>> origin/master
         }
         
         function didntGetStream() {
