@@ -10,55 +10,49 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script>
         //--- Network----
-        
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-         var socket = io.connect('http://10.228.56.50:3000'); //ローカル
-=======
-         var socket = io.connect('http://10.228.56.10:3000'); //ローカル
->>>>>>> origin/master
-=======
-         var socket = io.connect('http://10.228.56.10:8000'); //ローカル
->>>>>>> Stashed changes
+
+
+
+					var socket = io.connect('http://10.228.56.50:3000'); //ローカル
 
           //サーバから受け取るイベント
           socket.on("connect", function () {});  // 接続時
           socket.on("disconnect", function (client) {});  // 切断時
           socket.on("remoteVolume",function(data){
               //it should be call back function
-              showVolume('RemoteVolume', data[0]); //graphics              
+              showVolume('RemoteVolume', data[0]); //graphics
           });
-        
+
         //send data to server
           function sendBroadcast(x, y) {
             var array = new Array(x,y);
             socket.emit("C_to_S_broadcast",array); // サーバへ送信
           }
 
-        
+
         //---------------
-        
-        
-        
-        
+
+
+
+
         window.onload = function() {
             // grab our canvas
             //canvasContext = document.getElementById( "meter" ).getContext("2d");
-            
+
             // monkeypatch Web Audio
             window.AudioContext = window.AudioContext || window.webkitAudioContext;
-            
+
             // grab an audio context
             audioContext = new AudioContext();
-        
+
             // Attempt to get audio input
             try {
                 // monkeypatch getUserMedia
-                navigator.getUserMedia = 
+                navigator.getUserMedia =
                     navigator.getUserMedia ||
                     navigator.webkitGetUserMedia ||
                     navigator.mozGetUserMedia;
-        
+
                 // ask for an audio input
                 navigator.getUserMedia(
                 {
@@ -75,9 +69,9 @@
             } catch (e) {
                 alert('getUserMedia threw exception :' + e);
             }
-        
+
         }
-        
+
         function showVolume(elementId, volume) {
             if(!elementId)return;
             var ctx = document.getElementById(elementId).getContext("2d");
@@ -94,25 +88,25 @@
             ctx.lineWidth = 3;
             ctx.strokeStyle = 'rgb(155, 188, 89)'; // 緑
             ctx.stroke();
-            
+
             ctx.fillStyle='rgba(34,51,68,0.1)';
 <<<<<<< HEAD
-            ctx.fillRect(0,0,360,360);     
+            ctx.fillRect(0,0,360,360);
 =======
             ctx.fillRect(0,0,360,360);
-            
-            
+
+
             console.log(r);
-        
+
 >>>>>>> origin/master
         }
-        
+
         function didntGetStream() {
             alert('Stream generation failed.');
         }
-        
+
         var mediaStreamSource = null;
-        
+
         function gotStream(stream) {
             // Create an AudioNode from the stream.
             mediaStreamSource = audioContext.createMediaStreamSource(stream);
@@ -123,21 +117,21 @@
             Loop();
         }
 
-        
+
         function Loop(){
             rafID = window.requestAnimationFrame( Loop );
             sendBroadcast(meter.volume, 0); //send volume data 0.0 to 1.0
             //console.log(meter.volume);
         }
-    
+
     </script>
-    
+
 </head>
 <body>
 
      <div class="VideoContainer" width="360" style="float:left">
             <div  class="volume_bar"><canvas id="RemoteVolume" width="360" height="360"></canvas></div>
         </div>
-    
+
 </body>
 </html>
